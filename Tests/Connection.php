@@ -8,15 +8,13 @@ class Connection extends \PHPUnit_Extensions_Database_TestCase
 {
     protected static $db = null;
     protected $conn = null;
-    
+
     public function getConnection()
     {
         if ($this->conn === null) {
-            
             if (self::$db == null) {
-                
                 self::$db = new SQL(['dsn' => 'sqlite::memory:']);
-                
+
                 $this->createTable();
             }
             $this->conn = $this->createDefaultDBConnection(self::$db->link, ':memory:');
@@ -24,7 +22,7 @@ class Connection extends \PHPUnit_Extensions_Database_TestCase
 
         return $this->conn;
     }
-    
+
     public function createTable()
     {
         $sql = 'CREATE TABLE IF NOT EXISTS `account` (
@@ -54,10 +52,10 @@ class Connection extends \PHPUnit_Extensions_Database_TestCase
             `avatar_id` int(11),
             PRIMARY KEY (`avatar_id`)
           );';
-          
+
         self::$db->link->exec($sql);
     }
-    
+
     protected function getDataSet()
     {
         return $this->createArrayDataSet([
