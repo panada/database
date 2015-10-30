@@ -472,7 +472,7 @@ abstract class SQLAbstract
 
         $bits = $wheres = [];
         foreach ((array) array_keys($data) as $k) {
-            $bits[] = "$k = '$data[$k]'";
+            $bits[] = "$k = $data[$k]";
         }
 
         if (!empty($this->criteria)) {

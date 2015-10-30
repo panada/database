@@ -9,5 +9,7 @@ class SelectTest extends Connection
         $users = self::$db->getAll('account');
 
         $this->assertGreaterThanOrEqual(2, count($users));
+        
+        //print_r($users);
     }
 }
