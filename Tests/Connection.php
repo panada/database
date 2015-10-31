@@ -62,6 +62,7 @@ class Connection extends \PHPUnit_Extensions_Database_TestCase
             'account' => [
                 ['email' => 'joe@gmail.com', 'user_name' => 'joe', 'birthday' => '2010-04-24 17:15:23'],
                 ['email' => 'mark@gmail.com',   'user_name' => 'mark',  'birthday' => '2010-04-26 12:14:20'],
+                ['email' => 'mark2@gmail.com',   'user_name' => 'mark',  'birthday' => '2010-04-26 12:14:20'],
             ],
         ]);
     }
