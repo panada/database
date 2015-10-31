@@ -104,8 +104,8 @@ class SQL extends SQLAbstract implements SQLInterface
             $this->init();
         }
 
+		$this->lastQuery = $sql;
         $query = $this->link->$method($sql);
-        $this->lastQuery = $sql;
 
         if (!$query) {
             $backtrace = debug_backtrace()[2];

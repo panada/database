@@ -35,8 +35,22 @@ class SelectTest extends Connection
     
     public function testJoin()
     {
-        //$data = self::$db->select('account.user_name', 'post.comments')->from('account')->join('post')->on('account.user_id', '=', 'post.author_id');
+        self::$db->select('account.user_name', 'post.comments')->from('account')->join('post')->on('account.user_id', '=', 'post.author_id')->getAll();
         
-        //var_dump(self::$db->getLastQuery());
+        $sql = "SELECT account.user_name, post.comments FROM account JOIN post ON (account.user_id = post.author_id)";
+        
+        $this->assertEquals($sql, self::$db->getLastQuery());
+        
+        // RIGHT and FULL OUTER JOINs are not currently supported in sqlite
+        try {
+            self::$db->select('account.user_name', 'post.comments')->from('account')->join('post', 'RIGHT')->on('account.user_id', '=', 'post.author_id')->getAll();
+        }
+        catch(\Exception $e) {
+            $sql = "SELECT account.user_name, post.comments FROM account RIGHT JOIN post ON (account.user_id = post.author_id)";
+            
+            $this->assertEquals($sql, self::$db->getLastQuery());
+        }
+        
+        
     }
 }
