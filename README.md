@@ -129,6 +129,54 @@ SQL output:
 UPDATE tableName SET name = 'budi', email = 'budi@budi.com' WHERE id = 6
 ```
 
+### Select
+
+```php
+$data = $this->db->select()->from('users')->getAll();
+```
+
+SQL output:
+
+```sql
+SELECT * FROM users
+```
+
+```php
+$data = $this->db->select('id', 'name')->from('users')->getAll();
+// or
+$data = $this->db->select(['id', 'name'])->from('users')->getAll();
+```
+
+SQL output:
+
+```sql
+SELECT id, name FROM users
+```
+
+### Select with SQL built in function
+
+```php
+$data = $this->db->select('COUNT(*)')->from('users')->getVar();
+```
+
+SQL output:
+
+```sql
+SELECT COUNT(*) FROM users
+```
+
+### Distinct
+
+```php
+$data = $this->db->select('name')->distinct()->from('users')->limit(10)->getAll();
+```
+
+SQL output:
+
+```sql
+SELECT DISTINCT name FROM users LIMIT 10
+```
+
 ## Run the Test
 
 Go to project root. Run composer install to get PHPUnit Package.
