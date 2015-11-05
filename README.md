@@ -56,7 +56,7 @@ class Hello
 }
 ```
 
-If you hanve more then one db connection, here's the example:
+If you have more then one db connection, here's the example:
 
 ```php
 <?php
