@@ -177,6 +177,25 @@ SQL output:
 SELECT DISTINCT name FROM users LIMIT 10
 ```
 
+## Examples
+
+Heres an example to insert then fatch some db data:
+
+```php
+public function testDB()
+{
+    $this->db = \Panada\Database\SQL::getInstance();
+    
+    $query = $this->db->insert('users', [
+        'name' => rand(), 'email' => 'budi@budi.com', 'password' => 'password'
+    ]);
+    
+    $data = $this->db->select()->from('users')->getAll();
+    
+    return 'status insert: '.var_export($query, true).' data: <pre>'.print_r($data, true).'</pre>';
+}
+```
+
 ## Run the Test
 
 Go to project root. Run composer install to get PHPUnit Package.
